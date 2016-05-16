@@ -8,5 +8,3 @@ end
 if not is_valid(token_cookie) then
   return ngx.exec("/form.html")
 end
-
--- 
