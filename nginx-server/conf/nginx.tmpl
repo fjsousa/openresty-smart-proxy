@@ -1,0 +1,13 @@
+worker_processes  1;
+
+error_log logs/error.log;
+env COOKIE_NAME={{COOKIE_NAME}};
+env COOKIE_DOMAIN={{COOKIE_DOMAIN}};
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include servers/server.conf;
+}

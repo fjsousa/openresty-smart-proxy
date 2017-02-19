@@ -3,11 +3,13 @@ server {
   server_name mypage.com;
 
   location / {
-    proxy_pass http://www.google.co.uk;
+    resolver 8.8.8.8;
+    proxy_pass {{URL}};
     access_by_lua_file lualib/main.lua;
   }
 
   location = /auth {
+    resolver 8.8.8.8;
     lua_need_request_body on;
     access_by_lua_file lualib/auth.lua;
   }
@@ -17,7 +19,7 @@ server {
   } 
 
   location /form {
-    include conf/mime.types;
+    include mime.types;
     root public;
   }
 
