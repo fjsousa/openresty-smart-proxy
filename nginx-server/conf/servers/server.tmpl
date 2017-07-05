@@ -4,8 +4,8 @@ server {
 
   location / {
     resolver 8.8.8.8;
-    proxy_pass {{URL}};
     access_by_lua_file lualib/main.lua;
+    proxy_pass {{URL}};
   }
 
   location = /auth {
@@ -16,7 +16,7 @@ server {
 
   location = /form.html {
     root public;
-  } 
+  }
 
   location /form {
     include mime.types;

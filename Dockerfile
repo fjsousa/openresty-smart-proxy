@@ -4,7 +4,7 @@ RUN apk update \
  && apk add --virtual build-deps \
     unzip wget curl gcc make musl-dev \
     pcre-dev openssl-dev zlib-dev \
-    ncurses-dev readline-dev perl \ 
+    ncurses-dev readline-dev perl \
  && echo "==> Installing Lua dependencies..." \
  && luarocks install busted \
  && luarocks install lua-resty-http \
@@ -19,7 +19,7 @@ RUN echo "==> Replacing nginx *.tmpl files..."
 ENV NGINX_CONFIG /opt/openresty/nginx/nginx-server/conf/nginx
 ENV SERVER_CONFIG /opt/openresty/nginx/nginx-server/conf/servers/server
 ENV COOKIE_NAME Token
-ENV URL http://www.google.co.uk
+ENV URL https://www.google.co.uk
 ENV COOKIE_DOMAIN mywebsite.com
 
 RUN cp "$NGINX_CONFIG".tmpl "$NGINX_CONFIG".conf \

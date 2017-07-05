@@ -1,6 +1,10 @@
-io.input("nginx-server/conf/valid")
+io.input("nginx-server/lualib/valid")
 
-function is_valid (req_token) 
+function is_valid (req_token)
+
+   -- ngx.log(ngx.INFO, "Checking validity for token: " .. req_token)
+
+   ngx.log(ngx.INFO, "Checking validity for token: ")
 
   local list = {}
 
@@ -10,7 +14,7 @@ function is_valid (req_token)
 
   for idx, token in ipairs(list) do
     if token == req_token then
-      return true
+      return req_token
     end
   end
 
