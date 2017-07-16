@@ -19,15 +19,14 @@ RUN echo "==> Replacing nginx *.tmpl files..."
 ENV NGINX_CONFIG /opt/openresty/nginx/nginx-server/conf/nginx
 ENV SERVER_CONFIG /opt/openresty/nginx/nginx-server/conf/servers/server
 ENV COOKIE_NAME Token
-ENV URL https://www.google.co.uk
-ENV COOKIE_DOMAIN mywebsite.com
+ENV URL http://www.theuselessweb.com/
+ENV COOKIE_DOMAIN localhost
 
 RUN cp "$NGINX_CONFIG".tmpl "$NGINX_CONFIG".conf \
  && cp "$SERVER_CONFIG".tmpl "$SERVER_CONFIG".conf \
  && sed -i -- "s|{{COOKIE_NAME}}|$COOKIE_NAME|g" $NGINX_CONFIG.conf \
  && sed -i -- "s|{{COOKIE_DOMAIN}}|$COOKIE_DOMAIN|g" $NGINX_CONFIG.conf \
  && sed -i -- "s|{{URL}}|$URL|g" $SERVER_CONFIG.conf
-
 
 RUN apk del build-deps
 
